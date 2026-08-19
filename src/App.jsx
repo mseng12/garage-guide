@@ -1,10 +1,17 @@
 import vehicles from "./data/vehicles";
+import VehicleCard from "./components/VehicleCard";
 
 function App() {
   return (
     <main>
       <h1>Garage Guide</h1>
-      <p>{vehicles[0].year} {vehicles[0].make} {vehicles[0].model}</p>
+      
+      {vehicles.map((vehicle) => (
+        <VehicleCard
+        key= {vehicle.id}
+        vehicle={vehicle}
+        />
+      ))}
     </main>
   );
 }
