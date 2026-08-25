@@ -1,4 +1,4 @@
-function VehicleCard ({ vehicle }) {
+function VehicleCard({ vehicle, onView }) {
     return (
         <article>
             <h2>
@@ -6,6 +6,11 @@ function VehicleCard ({ vehicle }) {
             </h2>
 
             <p>{vehicle.type}</p>
+
+            <button onClick={onView}>
+                View Vehicle
+            </button>
+
         </article>
     );
 }
