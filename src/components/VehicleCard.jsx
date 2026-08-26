@@ -1,4 +1,4 @@
-function VehicleCard({ vehicle, onView }) {
+function VehicleCard({ vehicle, onView, onFavorite }) {
     return (
         <article>
             <h2>
@@ -11,6 +11,9 @@ function VehicleCard({ vehicle, onView }) {
                 View Vehicle
             </button>
 
+            <button onClick={() => onFavorite(vehicle)}>
+                Add to Favorites
+            </button>
         </article>
     );
 }

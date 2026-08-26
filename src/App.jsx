@@ -2,10 +2,11 @@ import { useState } from "react";
 import vehicles from "./data/vehicles";
 import VehicleCard from "./components/VehicleCard";
 
-function App() {
+function App() { 
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedType, setSelectedType] = useState("All");
   const [selectedVehicle, setSelectedVehicle] = useState(null);
+  const [favorites, setFavorites] = useState([]);
  
 const filteredVehicles = vehicles.filter((vehicle) => {
   const searchText = searchTerm.toLowerCase();
@@ -19,6 +20,25 @@ const filteredVehicles = vehicles.filter((vehicle) => {
 
   return matchesSearch && matchesType;
 });
+
+function addToFavorites(vehicle) {
+
+  const alreadyFavorite = favorites.some(
+    (favorite) => favorite.id === vehicle.id
+  );
+
+  if (!alreadyFavorite) {
+    setFavorites([...favorites, vehicle]);
+  }
+}
+
+function removeFromFavorites(vehicleId) {
+  const updatedFavorites = favorites.filter(
+    (favorite) => favorite.id !== vehicleId
+  );
+
+  setFavorites(updatedFavorites);
+}
 
   return (
     <main>
@@ -80,7 +100,28 @@ const filteredVehicles = vehicles.filter((vehicle) => {
   <p>Service manual not currently available.</p>
 )}
   </section>
+
 )}
+
+<section>
+  <h2>Favorites</h2>
+
+  {favorites.length === 0 ? (
+    <p>No favorites yet.</p>
+  ) : (
+    favorites.map((vehicle) => (
+      <div key={vehicle.id}>
+      <p>
+        {vehicle.year} {vehicle.make} {vehicle.model}
+      </p>
+
+      <button onClick={() => removeFromFavorites(vehicle.id)}>
+        Remove from Favorites
+      </button>
+      </div>
+    ))
+  )}
+</section>
 
 {filteredVehicles.length > 0 ? (
   filteredVehicles.map((vehicle) => (
@@ -88,6 +129,7 @@ const filteredVehicles = vehicles.filter((vehicle) => {
       key={vehicle.id}
       vehicle={vehicle}
       onView={() => setSelectedVehicle(vehicle)}
+      onFavorite={addToFavorites}
     />
   ))
 ) : (
