@@ -4,42 +4,54 @@ const vehicles = [
         year: 1995,
         make: "Toyota",
         model: "Supra",
-        type: "Car"
+        type: "Car",
+        ownersManualUrl:"",
+        serviceManualUrl: ""
     },
     {
         id: 2,
         year: 2011,
         make: "Honda",
         model: "Civic SI",
-        type: "Car"
+        type: "Car",
+        ownersManualUrl:"",
+        serviceManualUrl: ""
     },
     {
         id: 3,
         year: 1998,
         make: "Toyota",
         model: "MR2",
-        type: "Car"
+        type: "Car",
+        ownersManualUrl:"",
+        serviceManualUrl: ""
     },
     {
         id: 4,
         year: 2000,
         make: "Yamaha",
         model: "V Star 1100 Classic",
-        type: "Motorcycle"
+        type: "Motorcycle",
+        ownersManualUrl:"",
+        serviceManualUrl: ""
     },
     {
         id: 5,
         year: 2001,
         make: "Kawasaki",
         model: "Vulcan 500",
-        type: "Motorcycle"
+        type: "Motorcycle",
+        ownersManualUrl:"",
+        serviceManualUrl: ""
     },
     {
         id: 6,
         year: 2012,
         make: "Honda",
         model: "Rebel",
-        type: "Motorcycle"
+        type: "Motorcycle",
+        ownersManualUrl:"",
+        serviceManualUrl: ""
     }
 ];
 
