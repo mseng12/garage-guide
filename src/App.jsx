@@ -115,8 +115,9 @@ function removeFromFavorites(vehicleId) {
   {favorites.length === 0 ? (
     <p>No favorites yet.</p>
   ) : (
-    favorites.map((vehicle) => (
-      <div key={vehicle.id}>
+    <div className="favorites-grid">
+    {favorites.map((vehicle) => (
+      <div className="favorite-card" key={vehicle.id}>
       <p>
         {vehicle.year} {vehicle.make} {vehicle.model}
       </p>
@@ -125,7 +126,8 @@ function removeFromFavorites(vehicleId) {
         Remove from Favorites
       </button>
       </div>
-    ))
+    ))}
+    </div>
   )}
 </section>
 
