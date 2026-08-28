@@ -43,7 +43,11 @@ function removeFromFavorites(vehicleId) {
   return (
     <main>
       <h1>Garage Guide</h1>
-      
+      <p className="intro-text">
+        Find vehicle information, browse manuals, and save your favorite cars and motorcycles.
+      </p>
+
+      <div className= "search-section"> 
       <label htmlFor="vehicleSearch">Search vehicles:</label>
 
 <input
@@ -53,7 +57,9 @@ function removeFromFavorites(vehicleId) {
   value={searchTerm}
   onChange={(event) => setSearchTerm(event.target.value)}
 />
-    <div>
+</div>
+    
+    <div className="filter-buttons">
   <button onClick={() => setSelectedType("All")}>
     All
   </button>
@@ -68,7 +74,7 @@ function removeFromFavorites(vehicleId) {
 </div>
 
 {selectedVehicle &&(
-  <section>
+  <section className="selected-vehicle">
     <h2>Selected Vehicle</h2>
 
     <p>{selectedVehicle.year} {selectedVehicle.make} {selectedVehicle.model}</p>
@@ -103,14 +109,15 @@ function removeFromFavorites(vehicleId) {
 
 )}
 
-<section>
+<section className="favorites-section">
   <h2>Favorites</h2>
 
   {favorites.length === 0 ? (
     <p>No favorites yet.</p>
   ) : (
-    favorites.map((vehicle) => (
-      <div key={vehicle.id}>
+    <div className="favorites-grid">
+    {favorites.map((vehicle) => (
+      <div className="favorite-card" key={vehicle.id}>
       <p>
         {vehicle.year} {vehicle.make} {vehicle.model}
       </p>
@@ -119,19 +126,22 @@ function removeFromFavorites(vehicleId) {
         Remove from Favorites
       </button>
       </div>
-    ))
+    ))}
+    </div>
   )}
 </section>
 
 {filteredVehicles.length > 0 ? (
-  filteredVehicles.map((vehicle) => (
+  <section className="vehicle-grid">
+  {filteredVehicles.map((vehicle) => (
     <VehicleCard
       key={vehicle.id}
       vehicle={vehicle}
       onView={() => setSelectedVehicle(vehicle)}
       onFavorite={addToFavorites}
     />
-  ))
+  ))}
+  </section>
 ) : (
   <p>No vehicles found.</p>
 )}

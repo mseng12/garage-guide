@@ -1,6 +1,6 @@
 function VehicleCard({ vehicle, onView, onFavorite }) {
     return (
-        <article>
+        <article className="vehicle-card">
             <h2>
                 {vehicle.year} {vehicle.make} {vehicle.model}
             </h2>
