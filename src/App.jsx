@@ -7,6 +7,7 @@ function App() {
   const [selectedType, setSelectedType] = useState("All");
   const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [favorites, setFavorites] = useState([]);
+  const [selectedYear, setSelectedYear] = useState("All");
  
 const filteredVehicles = vehicles.filter((vehicle) => {
   const searchText = searchTerm.toLowerCase();
@@ -18,8 +19,12 @@ const filteredVehicles = vehicles.filter((vehicle) => {
   const matchesType =
     selectedType === "All" || vehicle.type === selectedType;
 
-  return matchesSearch && matchesType;
-});
+    const matchesYear =
+  selectedYear === "All" || vehicle.year === Number(selectedYear);
+
+return matchesSearch && matchesType && matchesYear;
+
+ });
 
 function addToFavorites(vehicle) {
 
@@ -58,6 +63,19 @@ function removeFromFavorites(vehicleId) {
   onChange={(event) => setSearchTerm(event.target.value)}
 />
 </div>
+
+<select
+  value={selectedYear}
+  onChange={(event) => setSelectedYear(event.target.value)}
+  >
+    <option value="All">All Years</option>
+    <option value="1995">1995</option>
+    <option value="1998">1998</option>
+    <option value="2000">2000</option>
+    <option value="2001">2001</option>
+    <option value="2011">2011</option>
+    <option value="2012">2012</option>
+  </select>
     
     <div className="filter-buttons">
   <button onClick={() => setSelectedType("All")}>
