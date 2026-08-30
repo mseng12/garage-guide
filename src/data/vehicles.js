@@ -13,7 +13,7 @@ const vehicles = [
         id: 2,
         year: 2011,
         make: "Honda",
-        model: "Civic SI",
+        model: "Civic Si",
         type: "Car",
         ownersManualUrl:"",
         serviceManualUrl: ""
