@@ -1,11 +1,11 @@
 const vehicles = [
     {
         id: 1,
-        year: 1995,
+        year: 1996``,
         make: "Toyota",
         model: "Supra",
         type: "Car",
-        ownersManualUrl:"",
+        ownersManualUrl:"https://carmanuals2.com/toyota/supra-1996-owner-s-manual-88666",
         serviceManualUrl: ""
     },
    
@@ -13,9 +13,9 @@ const vehicles = [
         id: 2,
         year: 2011,
         make: "Honda",
-        model: "Civic Si",
+        model: "Civic Si Coupe",
         type: "Car",
-        ownersManualUrl:"",
+        ownersManualUrl:"https://techinfo.honda.com/rjanisis/pubs/OM/VA1111/VA1111OM.PDF",
         serviceManualUrl: ""
     },
    
@@ -25,7 +25,7 @@ const vehicles = [
         make: "Toyota",
         model: "MR2",
         type: "Car",
-        ownersManualUrl:"",
+        ownersManualUrl:"https://manuals.plus/m/9eed8c6b4de224e3159f58970385195b3655fd43a344fb00be6d4f229e4d9a3d",
         serviceManualUrl: ""
     },
    
@@ -35,7 +35,7 @@ const vehicles = [
         make: "Yamaha",
         model: "V Star 1100 Classic",
         type: "Motorcycle",
-        ownersManualUrl:"",
+        ownersManualUrl:"https://manualmachine.com/yamaha/vstar1100classic/10587394-user-manual/",
         serviceManualUrl: ""
     },
    
@@ -45,17 +45,17 @@ const vehicles = [
         make: "Kawasaki",
         model: "Vulcan 500",
         type: "Motorcycle",
-        ownersManualUrl:"",
+        ownersManualUrl:"https://pws.ktivs.net/dispeBook?file=99987-1006-01&lang_code=EN",
         serviceManualUrl: ""
     },
    
     {
         id: 6,
-        year: 2012,
+        year: 2019,
         make: "Honda",
-        model: "Rebel",
+        model: "Rebel 500",
         type: "Motorcycle",
-        ownersManualUrl:"",
+        ownersManualUrl:"https://cdn.powersports.honda.com/documentum/MWOM/ml.remawmom.2019_31mkga20_cmx500_rebel.pdf",
         serviceManualUrl: ""
     }
 ];

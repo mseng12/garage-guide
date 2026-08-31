@@ -69,12 +69,12 @@ function removeFromFavorites(vehicleId) {
   onChange={(event) => setSelectedYear(event.target.value)}
   >
     <option value="All">All Years</option>
-    <option value="1995">1995</option>
+    <option value="1996">1996</option>
     <option value="1998">1998</option>
     <option value="2000">2000</option>
     <option value="2001">2001</option>
     <option value="2011">2011</option>
-    <option value="2012">2012</option>
+    <option value="2019">2019</option>
   </select>
     
     <div className="filter-buttons">
@@ -100,7 +100,7 @@ function removeFromFavorites(vehicleId) {
 
     <h3>Manuals</h3>
 
-    {selectedVehicle.ownersMaunalUrl ? (
+    {selectedVehicle.ownersManualUrl ? (
       <a
         href={selectedVehicle.ownersManualUrl}
         target= "_blank"
