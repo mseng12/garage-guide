@@ -140,9 +140,14 @@ function removeFromFavorites(vehicleId) {
         {vehicle.year} {vehicle.make} {vehicle.model}
       </p>
 
+      <button onClick={() => setSelectedVehicle(vehicle)}>
+        View Vehicle
+      </button>
+
       <button onClick={() => removeFromFavorites(vehicle.id)}>
         Remove from Favorites
       </button>
+
       </div>
     ))}
     </div>

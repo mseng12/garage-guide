@@ -83,6 +83,10 @@ button:hover {
   padding: 16px;
 }
 
+.favorite-card button {
+  margin-right: 8px;
+}
+
 .vehicle-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
