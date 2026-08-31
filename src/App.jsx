@@ -1,173 +1,96 @@
 import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import vehicles from "./data/vehicles";
-import VehicleCard from "./components/VehicleCard";
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import Favorites from "./pages/Favorites";
+import About from "./pages/About";
+import Footer from "./components/Footer";
 
-function App() { 
+function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedType, setSelectedType] = useState("All");
   const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [favorites, setFavorites] = useState([]);
   const [selectedYear, setSelectedYear] = useState("All");
- 
-const filteredVehicles = vehicles.filter((vehicle) => {
-  const searchText = searchTerm.toLowerCase();
 
-  const matchesSearch =
-    vehicle.make.toLowerCase().includes(searchText) ||
-    vehicle.model.toLowerCase().includes(searchText);
+  const filteredVehicles = vehicles.filter((vehicle) => {
+    const searchText = searchTerm.toLowerCase();
 
-  const matchesType =
-    selectedType === "All" || vehicle.type === selectedType;
+    const matchesSearch =
+      vehicle.make.toLowerCase().includes(searchText) ||
+      vehicle.model.toLowerCase().includes(searchText);
+
+    const matchesType =
+      selectedType === "All" || vehicle.type === selectedType;
 
     const matchesYear =
-  selectedYear === "All" || vehicle.year === Number(selectedYear);
+      selectedYear === "All" ||
+      vehicle.year === Number(selectedYear);
 
-return matchesSearch && matchesType && matchesYear;
+    return matchesSearch && matchesType && matchesYear;
+  });
 
- });
+  function addToFavorites(vehicle) {
+    const alreadyFavorite = favorites.some(
+      (favorite) => favorite.id === vehicle.id
+    );
 
-function addToFavorites(vehicle) {
-
-  const alreadyFavorite = favorites.some(
-    (favorite) => favorite.id === vehicle.id
-  );
-
-  if (!alreadyFavorite) {
-    setFavorites([...favorites, vehicle]);
+    if (!alreadyFavorite) {
+      setFavorites([...favorites, vehicle]);
+    }
   }
-}
 
-function removeFromFavorites(vehicleId) {
-  const updatedFavorites = favorites.filter(
-    (favorite) => favorite.id !== vehicleId
-  );
+  function removeFromFavorites(vehicleId) {
+    const updatedFavorites = favorites.filter(
+      (favorite) => favorite.id !== vehicleId
+    );
 
-  setFavorites(updatedFavorites);
-}
+    setFavorites(updatedFavorites);
+  }
 
   return (
     <main>
-      <h1>Garage Guide</h1>
-      <p className="intro-text">
-        Find vehicle information, browse manuals, and save your favorite cars and motorcycles.
-      </p>
+      <Header />
 
-      <div className= "search-section"> 
-      <label htmlFor="vehicleSearch">Search vehicles:</label>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              selectedType={selectedType}
+              setSelectedType={setSelectedType}
+              selectedYear={selectedYear}
+              setSelectedYear={setSelectedYear}
+              filteredVehicles={filteredVehicles}
+              selectedVehicle={selectedVehicle}
+              setSelectedVehicle={setSelectedVehicle}
+              addToFavorites={addToFavorites}
+            />
+          }
+        />
 
-<input
-  id="vehicleSearch"
-  type="text"
-  placeholder="Search by make or model"
-  value={searchTerm}
-  onChange={(event) => setSearchTerm(event.target.value)}
-/>
-</div>
+        <Route
+          path="/favorites"
+          element={
+            <Favorites
+              favorites={favorites}
+              setSelectedVehicle={setSelectedVehicle}
+              removeFromFavorites={removeFromFavorites}
+            />
+          }
+        />
 
-<select
-  value={selectedYear}
-  onChange={(event) => setSelectedYear(event.target.value)}
-  >
-    <option value="All">All Years</option>
-    <option value="1996">1996</option>
-    <option value="1998">1998</option>
-    <option value="2000">2000</option>
-    <option value="2001">2001</option>
-    <option value="2011">2011</option>
-    <option value="2019">2019</option>
-  </select>
+        <Route
+          path="/about"
+          element={<About />}
+        />
+      </Routes>
+
+      <Footer />
     
-    <div className="filter-buttons">
-  <button onClick={() => setSelectedType("All")}>
-    All
-  </button>
-
-  <button onClick={() => setSelectedType("Car")}>
-    Cars
-  </button>
-
-  <button onClick={() => setSelectedType("Motorcycle")}>
-    Motorcycles
-  </button>
-</div>
-
-{selectedVehicle &&(
-  <section className="selected-vehicle">
-    <h2>Selected Vehicle</h2>
-
-    <p>{selectedVehicle.year} {selectedVehicle.make} {selectedVehicle.model}</p>
-    <p>{selectedVehicle.type}</p>
-
-    <h3>Manuals</h3>
-
-    {selectedVehicle.ownersManualUrl ? (
-      <a
-        href={selectedVehicle.ownersManualUrl}
-        target= "_blank"
-        rel="noreferrrer"
-        >
-        Owner's Manual
-      </a>
-    ) : (
-      <p>Owner's Manual not currently available</p>
-    )}
-
-    {selectedVehicle.serviceManualUrl ? (
-  <a
-    href={selectedVehicle.serviceManualUrl}
-    target="_blank"
-    rel="noreferrer"
-  >
-    Service Manual
-  </a>
-) : (
-  <p>Service manual not currently available.</p>
-)}
-  </section>
-
-)}
-
-<section className="favorites-section">
-  <h2>Favorites</h2>
-
-  {favorites.length === 0 ? (
-    <p>No favorites yet.</p>
-  ) : (
-    <div className="favorites-grid">
-    {favorites.map((vehicle) => (
-      <div className="favorite-card" key={vehicle.id}>
-      <p>
-        {vehicle.year} {vehicle.make} {vehicle.model}
-      </p>
-
-      <button onClick={() => setSelectedVehicle(vehicle)}>
-        View Vehicle
-      </button>
-
-      <button onClick={() => removeFromFavorites(vehicle.id)}>
-        Remove from Favorites
-      </button>
-
-      </div>
-    ))}
-    </div>
-  )}
-</section>
-
-{filteredVehicles.length > 0 ? (
-  <section className="vehicle-grid">
-  {filteredVehicles.map((vehicle) => (
-    <VehicleCard
-      key={vehicle.id}
-      vehicle={vehicle}
-      onView={() => setSelectedVehicle(vehicle)}
-      onFavorite={addToFavorites}
-    />
-  ))}
-  </section>
-) : (
-  <p>No vehicles found.</p>
-)}
     </main>
   );
 }
