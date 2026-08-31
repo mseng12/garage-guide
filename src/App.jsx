@@ -14,7 +14,8 @@ function App() {
   const [favorites, setFavorites] = useState([]);
   const [selectedYear, setSelectedYear] = useState("All");
 
-  const filteredVehicles = vehicles.filter((vehicle) => {
+  // Filter vehicles by search text, vehicle type, and selected year
+  const filteredVehicles = vehicles.filter((vehicle) => { 
     const searchText = searchTerm.toLowerCase();
 
     const matchesSearch =
@@ -31,6 +32,7 @@ function App() {
     return matchesSearch && matchesType && matchesYear;
   });
 
+  // Add a vehicle to favorites only if it is not already saved 
   function addToFavorites(vehicle) {
     const alreadyFavorite = favorites.some(
       (favorite) => favorite.id === vehicle.id
@@ -41,6 +43,7 @@ function App() {
     }
   }
 
+  // Remove a vehicle from favorites using its id
   function removeFromFavorites(vehicleId) {
     const updatedFavorites = favorites.filter(
       (favorite) => favorite.id !== vehicleId
