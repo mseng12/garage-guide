@@ -6,6 +6,7 @@ function ContactForm() {
   const [message, setMessage] = useState("");
   const [formMessage, setFormMessage] = useState("");
 
+  // Validate each form field before showing the success message
   function handleSubmit(event) {
     event.preventDefault();
 
