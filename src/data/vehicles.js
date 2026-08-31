@@ -1,12 +1,12 @@
 const vehicles = [
     {
         id: 1,
-        year: 1996``,
+        year: 1996,
         make: "Toyota",
         model: "Supra",
         type: "Car",
         ownersManualUrl:"https://carmanuals2.com/toyota/supra-1996-owner-s-manual-88666",
-        serviceManualUrl: ""
+        serviceManualUrl: "https://www.carmanualsonline.info/toyota-supra-1995-service-repair-manual",
     },
    
     {
@@ -46,7 +46,7 @@ const vehicles = [
         model: "Vulcan 500",
         type: "Motorcycle",
         ownersManualUrl:"https://pws.ktivs.net/dispeBook?file=99987-1006-01&lang_code=EN",
-        serviceManualUrl: ""
+        serviceManualUrl: "https://www.manua.ls/kawasaki/vulcan-500-ltd-2001/manual",
     },
    
     {
@@ -56,7 +56,7 @@ const vehicles = [
         model: "Rebel 500",
         type: "Motorcycle",
         ownersManualUrl:"https://cdn.powersports.honda.com/documentum/MWOM/ml.remawmom.2019_31mkga20_cmx500_rebel.pdf",
-        serviceManualUrl: ""
+        serviceManualUrl: "https://drive.google.com/file/d/1f_MYojSW9JdmVXzdx5xzXzLyKLkwIa6X/view",
     }
 ];
 

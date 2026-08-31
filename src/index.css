@@ -65,6 +65,11 @@ button:hover {
   margin-bottom: 20px;
 }
 
+.selected-vehicle a {
+  display: inline-block;
+  margin-right: 16px;
+}
+
 .favorites-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
